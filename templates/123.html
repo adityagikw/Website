@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+.topnav.a{
+  font-size: 9px;
+}
+
+        </style>
+</head>
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="#home" class="active">Infomania</a>
+    <a href="#news"class="a">Home</a>
+    <a href="#about" class="b">About Us</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+    <form action="{{ url_for('mypage')}}" method="post">
+        <label for="alpha">Roll No:-</label>
+        <input id="alpha" type="text" pattern="[a-zA-Z0-9]+" id="roll_no" name="rname" placeholder="Roll No">
+        <label for="Fullname">Full Name:</label>
+        <input type="string" id="fullname" name="fname" placeholder="fullname">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="ename" placeholder="email">
+        <label for="description">Description</label>
+        <input type="string" id="description" name="dname" placeholder="Description">
+        <button type="submit" name="lo">Login</button>
+    </form>
+    <table>
+        <tr>
+          <th>Roll No</th>  
+          <th>Full Name</th>
+          <th>Email Id</th>
+          <th>Description</th>
+        </tr>
+        {% for user in all_user%}
+            <tr>
+            <td>{{user.Roll_No}}</td>    
+            <td>{{user.Fullname}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.Description}}</td>
+            </tr>
+        {% endfor %}    
+      </table>
+     
+             
+</body>
+</html>
+    

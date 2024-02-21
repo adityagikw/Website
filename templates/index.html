@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Infomania</title>
+    
+</head>
+<style>
+body{
+    width: 100%;
+    background-color:rgb(29, 31, 128);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}    
+    
+
+.main{
+    width: 100%;
+    
+    background-position: center;
+    background-color: rgb(29, 31, 128);
+    background-size: cover;
+    height: 100vh;
+}
+
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo{
+    color: #ff7200;
+    font-size: 35px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+    margin-top: 5px
+}
+
+.menu{
+    width: 280px;
+    float: right;
+    height: 70px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+
+ul li{
+    list-style: none;
+    margin-right: 52px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: #ff7200;
+}
+
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #fff;
+    position: relative;
+}
+
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+}
+
+.content h1{
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+
+
+
+
+
+.cn:hover{
+    background-color: #fff;
+}
+
+.content span{
+    color: #ff7200;
+    font-size: 65px
+}
+
+.form{
+    width: 150px;
+    height: 880px;
+    background: linear-gradient();
+    position: absolute;
+    top: -40px;
+    left: 830px;
+    transform: translate(0%,-5%);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+
+.form input{
+    width: 240px;
+    height: 35px;
+    background: transparent;
+    border-bottom: 1px solid #ff7200;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    font-family: sans-serif;
+}
+
+.form input:focus{
+    outline: none;
+}
+
+
+
+.btnn{
+    width: 240px;
+    height: 40px;
+    background: #ff7200;
+    border: none;
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.4s ease;
+}
+.btnn:hover{
+    background: #fff;
+    color: #ff7200;
+}
+.btnn a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+.form .link{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+table {
+        font-family: 'Times New Roman';
+        background-color: rgb(29, 31, 128) ;
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td {
+           color: #dddddd; 
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        th {
+            border: 1px solid #dddddd;
+            color: #ff7200;
+          background-color:  rgb(29, 31, 128);
+        }
+</style>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"><span>Infomania</span></h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="{{url_for('about')}}">ABOUT</a></li>
+                </ul>
+            </div>
+
+        </div> 
+        <div class="content">
+            <h1> Student <br><span>Information System </span></h1>
+            <p class="par">This website will help you to store and find information about student.
+                <br> Helps you keep and maintain multiple records effortlessly.... </p>
+
+               
+
+                <div class="form">
+                   
+                  <form action="{{ url_for('mypage')}}" method="post">
+                    <label for="alpha">Roll No:-</label>
+                    <input id="alpha" type="text" pattern="[a-zA-Z0-9]+" id="roll_no" name="rname" >
+                    <label for="Fullname">Full Name:</label>
+                    <input type="string" id="fullname" name="fname" >
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="ename" >
+                    <label for="description">Description</label>
+                    <input type="string" id="description" name="dname">
+                    <button class="btnn" type="submit " name="lo">Login</a></button>
+                 </form>
+
+                   
+                </div>
+                    </div>
+                </div>
+        </div>
+        <table>
+            <tr>
+              <th>Sr.No</th>  
+              <th>Roll No</th>  
+              <th>Full Name</th>
+              <th>Email Id</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+            {% for user in all_user%}
+                <tr>
+                <td>{{loop.index}}</td>   
+                <td>{{user.Roll_No}}</td>    
+                <td>{{user.Fullname}}</td>
+                <td>{{user.Email}}</td>
+                <td>{{user.Description}}</td>
+                </tr>
+            {% endfor %}    
+          </table>
+    </div>
+    
+</body>
+</html>
